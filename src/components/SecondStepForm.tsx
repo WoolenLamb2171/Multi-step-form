@@ -27,10 +27,8 @@ const SeconsStepForm = () => {
         if(getValues("billing-type") !== ""){
             alert(getValues("billing-type"));
             router.push('/ThirdStep')
-        } else {
-            alert("Chose the option!")
         }
-        
+        alert("Select the option")
     }
 
     return ( 
