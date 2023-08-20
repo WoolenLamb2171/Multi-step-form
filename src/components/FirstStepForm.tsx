@@ -1,6 +1,7 @@
 "use client"
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation'
+import FirstStepFormHeader from "./FirstStepFormHeader";
 
 interface FormData {
     email: string;
@@ -25,14 +26,12 @@ const FirstStepForm = () => {
 
     const onSubmit = (): void =>{
         // reset();
-        // alert("first form is submitted");
         router.push('./SecondStep')
     }
 
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
-            <h1 className="font-Bold text-Marine-blue text-2xl mb-4">Personal Info</h1>
-            <p className="font-Regular text-Cool-gray text-base mb-4">Please provide your name, emil address and phone nuber.</p>
+            <FirstStepFormHeader />
 
             <form id="FirstStepForm" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex justify-between">
