@@ -1,7 +1,9 @@
+import SeconsStepForm from "@/components/SecondStepForm";
+
 const SecondStep = () => {
     return ( 
-        <main>
-            <h1 className="text-9xl font-Bold text-purple-800 mt-11">Second Step</h1>
+        <main className="flex justify-center items-center">
+            <SeconsStepForm />
         </main> 
     );
 }
