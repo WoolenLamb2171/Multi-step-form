@@ -21,7 +21,8 @@ const FirstStepForm = () => {
         mode: "onBlur"
     })
 
-    const onSubmit = (data: FormData): void =>{
+    const onSubmit = (): void =>{
+        reset();
         alert("first form is submitted");
     }
 
