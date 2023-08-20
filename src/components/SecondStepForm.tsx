@@ -5,25 +5,42 @@ import Image from "next/image";
 import advancedIcon from "../../public/images/icon-advanced.svg";
 import arcadeIcon from "../../public/images/icon-arcade.svg";
 import proIcon from "../../public/images/icon-pro.svg"
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import classNames from "classnames";
+import { useForm } from "react-hook-form";
+
+interface FormData {
+    "billing-type": string
+}
 
 const SeconsStepForm = () => {
     const router = useRouter();
     const [isSelected, setIsSelected] = useState(false);
+    const {register, handleSubmit, getValues} = useForm<FormData>({
+        defaultValues: {
+          "billing-type": ""
+        },
+        mode: "onChange"
+      });
 
-    const handleSecondFormSubmit = (): void =>{
-        router.push('/ThirdStep')
+    const handleSecondFormSubmit = () =>{
+        if(getValues("billing-type") !== ""){
+            alert(getValues("billing-type"));
+            router.push('/ThirdStep')
+        } else {
+            alert("Chose the option!")
+        }
+        
     }
 
     return ( 
     <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
         <SecondStepFormHeader />
-        <form className="w-full" id="SecondStepForm" onSubmit={handleSecondFormSubmit}>
+        <form className="w-full" id="SecondStepForm" onSubmit={handleSubmit(handleSecondFormSubmit)}>
             <fieldset>
 
                 <div className="relative mb-4">
-                    <input className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/firstButton" name="billing-type" id="firstButton" value="arcade" type="radio"/>
+                    <input {...register("billing-type")} className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/firstButton" id="firstButton" value={isSelected ? "yearly arcade" : "monthly arcade"} type="radio"/>
                     <div className="border border-Light-gray rounded-md peer-checked/firstButton:border-Purplish-blue peer-checked/firstButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3"  htmlFor="firstButton">
                             <Image className="mr-3" width={45} src={arcadeIcon} alt="Arcade icon"/>
@@ -38,7 +55,7 @@ const SeconsStepForm = () => {
                 </div>
 
                 <div className="relative mb-4"> 
-                    <input className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/secondButton" name="billing-type" type="radio" id="secondButton" value="advanced"/>
+                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/secondButton" type="radio" id="secondButton" value={isSelected ? "yearly advanced" : "monthly advanced"}/>
                     <div className="border border-Light-gray rounded-md peer-checked/secondButton:border-Purplish-blue peer-checked/secondButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3" htmlFor="secondButton">
                             <Image className="mr-3" width={45} src={advancedIcon} alt="Advanced icon" />
@@ -52,7 +69,7 @@ const SeconsStepForm = () => {
                 </div>
 
                 <div className="relative mb-4">
-                    <input className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/thirdButton" name="billing-type" type="radio"  id="thirdButton" value="pro"/>
+                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/thirdButton" type="radio"  id="thirdButton" value={isSelected ? "yearly pro" : "monthly pro"}/>
                     <div className="border border-Light-gray rounded-md peer-checked/thirdButton:border-Purplish-blue peer-checked/thirdButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3" htmlFor="thirdButton">
                             <Image className="mr-3" width={45}  src={proIcon} alt="Pro icon" />
