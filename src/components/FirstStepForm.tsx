@@ -24,7 +24,7 @@ const FirstStepForm = () => {
     })
     const router = useRouter();
 
-    const onSubmit = (): void =>{
+    const handleFirstFormSubmit = (): void =>{
         // reset();
         router.push('./SecondStep')
     }
@@ -33,7 +33,7 @@ const FirstStepForm = () => {
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <FirstStepFormHeader />
 
-            <form id="FirstStepForm" onSubmit={handleSubmit(onSubmit)}>
+            <form id="FirstStepForm" onSubmit={handleSubmit(handleFirstFormSubmit)}>
                 <div className="flex justify-between">
                     <label className="font-Regular text-xs text-blue-900" htmlFor="name">Name</label>
                     <div>{errors?.name && <p className="font-Regular text-xs text-Strawberry-red">{errors?.name?.message || "Error!"}</p>}</div>
