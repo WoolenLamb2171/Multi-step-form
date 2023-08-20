@@ -4,19 +4,19 @@
 
 @font-face {
   font-family: Ubuntu-Bold;
-  src: url("../../public/fonts/Ubuntu-Bold.ttf"), format("TrueType");
+  src: url("../../public/fonts/Ubuntu-Bold.ttf") format("TrueType");
 }
 
 @font-face {
   font-family: Ubuntu-Medium;
-  src: url("../../public/fonts/Ubuntu-Medium.ttf"), format("TrueType");
+  src: url("../../public/fonts/Ubuntu-Medium.ttf") format("TrueType");
 }
 
 @font-face {
   font-family: Ubuntu-Regular;
-  src: url("../../public/fonts/Ubuntu-Regular.ttf"), format("TrueType");
+  src: url("../../public/fonts/Ubuntu-Regular.ttf") format("TrueType");
 }
 
 body {
- @apply bg-Magnolia
+ @apply bg-Magnolia min-h-screen flex flex-col
 }
