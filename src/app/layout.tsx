@@ -1,9 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Image from 'next/image'
-import mobileImage from '../../public/images/bg-sidebar-mobile.svg'
 import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Image src={mobileImage} alt='sideBar image' className='w-full -z-10' priority/>
+        <Header />
         {children}
         <Footer />
       </body>
