@@ -5,9 +5,13 @@ import Image from "next/image";
 import advancedIcon from "../../public/images/icon-advanced.svg";
 import arcadeIcon from "../../public/images/icon-arcade.svg";
 import proIcon from "../../public/images/icon-pro.svg"
+import { useState } from "react";
+import clsx from "clsx";
+import classNames from "classnames";
 
 const SeconsStepForm = () => {
     const router = useRouter();
+    const [isSelected, setIsSelected] = useState(false);
 
     const handleSecondFormSubmit = (): void =>{
         router.push('/ThirdStep')
@@ -26,8 +30,8 @@ const SeconsStepForm = () => {
                             <Image className="mr-3" width={45} src={arcadeIcon} alt="Arcade icon"/>
                             <div>
                                 <h1 className="font-Medium text-Marine-blue text-base">Arcade</h1>
-                                <p className="font-Regular text-Cool-gray">{"$90/yr"}</p>
-                                {<p className="font-Regular text-blue-900 text-xs">2 months free</p>}
+                                <p className="font-Regular text-Cool-gray">{isSelected ? "$90/yr" : "$9/mo"}</p>
+                                {isSelected && <p className="font-Regular text-blue-900 text-xs">2 months free</p>}
                             </div>
                         </label>
                     </div>
@@ -41,8 +45,8 @@ const SeconsStepForm = () => {
                             <Image className="mr-3" width={45} src={advancedIcon} alt="Advanced icon" />
                             <div>
                                 <h1 className="font-Medium text-Marine-blue text-base">Advanced</h1>
-                                <p className="font-Regular text-Cool-gray">{"$120/yr"}</p>
-                                {<p className="font-Regular text-blue-900 text-xs">2 months free</p>}
+                                <p className="font-Regular text-Cool-gray">{isSelected ? "$120/yr" :  "$12/mo"}</p>
+                                {isSelected && <p className="font-Regular text-blue-900 text-xs">2 months free</p>}
                             </div>
                         </label>
                     </div>
@@ -55,15 +59,28 @@ const SeconsStepForm = () => {
                             <Image className="mr-3" width={45}  src={proIcon} alt="Pro icon" />
                             <div>
                                 <h1 className="font-Medium text-Marine-blue text-base">Pro</h1>
-                                <p className="font-Regular text-Cool-gray">{"$150/yr"}</p>
-                                {<p className="font-Regular text-blue-900 text-xs">2 months free</p>}
+                                <p className="font-Regular text-Cool-gray">{isSelected ? "$150/yr" : "$15/mo"}</p>
+                                {isSelected && <p className="font-Regular text-blue-900 text-xs">2 months free</p>}
                             </div>
                         </label>
                     </div>
                 </div>
-
             </fieldset>
         </form>
+
+        <div className="w-full bg-Magnolia py-4 px-14 rounded-md flex justify-between items-center">
+            <p className={classNames("text-Cool-gray transition-all duration-100", {
+                'text-Marine-blue': !isSelected,
+            })}>Monthly</p>
+            <button onClick={() => setIsSelected(!isSelected)} className="flex w-[45px] h-[20px] bg-Marine-blue rounded-full items-center">
+                <span className={classNames("h-[21px] w-[21px] bg-White rounded-full transition-all duration-100", {
+                    'ml-[24px]': isSelected,
+                })} />
+            </button>
+            <p className={classNames("text-Cool-gray transition-all duration-100", {
+                'text-Marine-blue': isSelected,
+            })}>Yearly</p>
+        </div>
     </div> 
     );
 }
