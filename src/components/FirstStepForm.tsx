@@ -1,5 +1,6 @@
 "use client"
 import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation'
 
 interface FormData {
     email: string;
@@ -20,10 +21,12 @@ const FirstStepForm = () => {
     } = useForm<FormData>({
         mode: "onBlur"
     })
+    const router = useRouter();
 
     const onSubmit = (): void =>{
-        reset();
-        alert("first form is submitted");
+        // reset();
+        // alert("first form is submitted");
+        router.push('./SecondStep')
     }
 
     return ( 
