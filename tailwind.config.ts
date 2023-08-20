@@ -20,8 +20,12 @@ const config: Config = {
         'Magnolia': 'hsl(217, 100%, 97%)',
         'Alabaster': 'hsl(231, 100%, 99%)',
         'White': 'hsl(0, 0%, 100%)',
+      },
+      fontFamily: {
+        Regular: "Ubuntu-Regular",
+        Medium: "Ubuntu-Medium",
+        Bold: "Ubuntu-Bold"
       }
-
     },
   },
   plugins: [],

@@ -3,9 +3,9 @@
 export default function Home() {
   return (
     <main className="flex ">
-      <h1 className="text-Marine-blue">Marine-blue</h1>
-      <h1 className="text-Purplish-blue">Purplish-blue</h1>
-      <h1 className="text-Pastel-blue">Pastel-blue</h1>
+      <h1 className="text-Marine-blue font-Bold">Marine-blue</h1>
+      <h1 className="text-Purplish-blue font-Regular">Purplish-blue</h1>
+      <h1 className="text-Pastel-blue font-Medium">Pastel-blue</h1>
       <h1 className="text-Light-blue">Light-blue</h1>
       <h1 className="text-Strawberry-red">Strawberry-red</h1>
 
