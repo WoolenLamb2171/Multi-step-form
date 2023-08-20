@@ -6,7 +6,6 @@ import advancedIcon from "../../public/images/icon-advanced.svg";
 import arcadeIcon from "../../public/images/icon-arcade.svg";
 import proIcon from "../../public/images/icon-pro.svg"
 import { useState } from "react";
-import clsx from "clsx";
 import classNames from "classnames";
 
 const SeconsStepForm = () => {
