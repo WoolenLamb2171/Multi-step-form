@@ -26,17 +26,15 @@ const FirstStepForm = () => {
     })
     const router = useRouter();
 
-    const {setUser} = useContext(UserContext);
+    const {setUser, user} = useContext(UserContext);
 
     const handleFirstFormSubmit = (): void =>{
         // reset();
         if(isValid){
-            isValid && setUser({
+            setUser({...user,
                 email: getValues('email'), 
                 phoneNumber: getValues('phoneNumber'), 
                 name: getValues("name"), 
-                billingType: "", 
-                isYearly: false
             });
             
             router.push('./SecondStep');

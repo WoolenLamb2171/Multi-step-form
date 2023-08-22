@@ -5,9 +5,10 @@ import Image from "next/image";
 import advancedIcon from "../../public/images/icon-advanced.svg";
 import arcadeIcon from "../../public/images/icon-arcade.svg";
 import proIcon from "../../public/images/icon-pro.svg"
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import classNames from "classnames";
 import { useForm } from "react-hook-form";
+import { User, UserContext } from "./ContextProvider";
 
 interface FormData {
     "billing-type": string
@@ -16,6 +17,7 @@ interface FormData {
 const SeconsStepForm = () => {
     const router = useRouter();
     const [isSelected, setIsSelected] = useState(false);
+    const {setUser, user} = useContext(UserContext);
     const {register, handleSubmit, getValues} = useForm<FormData>({
         defaultValues: {
           "billing-type": ""
@@ -26,6 +28,7 @@ const SeconsStepForm = () => {
     const handleSecondFormSubmit = () =>{
         if(getValues("billing-type") !== ""){
             alert(getValues("billing-type"));
+            setUser({...user, billingType: getValues("billing-type")})
             router.push('/ThirdStep')
         }
         alert("Select the option")
