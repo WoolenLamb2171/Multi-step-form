@@ -14,7 +14,14 @@ const ThirdStepForm = () => {
     const {user, setUser} = useContext(UserContext);
 
     const handleThirdFormSubmit = () =>{
+        setUser({
+            ...user, 
+            onlineService: (getValues('onlineService') && !user.onlineService),
+            largerStorage: (getValues('largerStorage') && !user.largerStorage),
+            customizableProfile: (getValues("customizableProfile") && !user.customizableProfile),
+        })
         alert(`onlineService:  ${getValues('onlineService')} largerStorage: ${getValues('largerStorage')} customizableProfile: ${getValues('customizableProfile')}`);
+        alert(JSON.stringify(user))
     }
 
     return ( 

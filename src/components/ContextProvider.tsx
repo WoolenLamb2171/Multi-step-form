@@ -6,6 +6,9 @@ export type User = {
     email: string;
     phoneNumber: string;
     billingType: string;
+    onlineService: boolean;
+    largerStorage: boolean;
+    customizableProfile: boolean;
 }
 
 export interface UserContextInterface {
@@ -19,6 +22,9 @@ const defaultState = {
         email: "",
         phoneNumber: "",
         billingType: "",
+        onlineService: false,
+        largerStorage: false,
+        customizableProfile: false,
     },
     setUser: (user: User) =>{}
 } as UserContextInterface
@@ -35,6 +41,9 @@ const ContextProvider = ({children}: UserProviderProps) => {
         email: "",
         phoneNumber: "",
         billingType: "",
+        onlineService: false,
+        largerStorage: false,
+        customizableProfile: false,
     })
 
     return ( 
