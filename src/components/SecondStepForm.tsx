@@ -53,7 +53,6 @@ const SeconsStepForm = () => {
                             </div>
                         </label>
                     </div>
-
                 </div>
 
                 <div className="relative mb-4"> 
