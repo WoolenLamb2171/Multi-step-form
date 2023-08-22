@@ -6,6 +6,7 @@ export type User = {
     email: string;
     phoneNumber: string;
     billingType: string;
+    isYearly: boolean;
 }
 
 export interface UserContextInterface {
@@ -34,7 +35,8 @@ const ContextProvider = ({children}: UserProviderProps) => {
         name: "",
         email: "",
         phoneNumber: "",
-        billingType: ""
+        billingType: "",
+        isYearly: false,
     })
 
     return ( 
