@@ -27,11 +27,12 @@ const SeconsStepForm = () => {
 
     const handleSecondFormSubmit = () =>{
         if(getValues("billing-type") !== ""){
-            alert(getValues("billing-type"));
-            setUser({...user, billingType: getValues("billing-type")})
-            router.push('/ThirdStep')
+            setUser({...user, billingType: getValues("billing-type")});
+            router.push('/ThirdStep');
+        } else{
+            alert("Select the option");
         }
-        alert("Select the option")
+        
     }
 
     return ( 
