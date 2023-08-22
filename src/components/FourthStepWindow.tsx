@@ -8,7 +8,7 @@ const FourthStepWindow = () => {
     const {user} = useContext(UserContext);
 
     function getTotal(user: User): number {
-        const basePriceMap = {
+        const basePriceMap: {[key: string]: number } = {
             "yearly arcade": 90,
             "monthly arcade": 9,
             "yearly advanced": 120,
@@ -17,13 +17,13 @@ const FourthStepWindow = () => {
             "monthly pro": 15,
         };
     
-        const additionalMonthlyPrices = {
+        const additionalMonthlyPrices: Record<string, number> = {
             customizableProfile: 2,
             largerStorage: 2,
             onlineService: 1,
         };
     
-        const additionalYearlyPrices = {
+        const additionalYearlyPrices: Record<string, number> = {
             customizableProfile: 20,
             largerStorage: 20,
             onlineService: 10,

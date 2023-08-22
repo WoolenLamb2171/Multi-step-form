@@ -9,6 +9,7 @@ export type User = {
     onlineService: boolean;
     largerStorage: boolean;
     customizableProfile: boolean;
+    [key: string]: string | boolean; 
 }
 
 export interface UserContextInterface {
