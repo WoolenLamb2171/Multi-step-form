@@ -1,6 +1,8 @@
 'use client';
 import { useForm } from "react-hook-form";
 import ThirdStepFormHeader from "./ThirsStepFormHeader";
+import { UserContext } from "./ContextProvider";
+import { useContext } from "react";
 interface FormData {
     onlineService: boolean;
     largerStorage: boolean;
@@ -8,8 +10,8 @@ interface FormData {
 }
 
 const ThirdStepForm = () => {
-
     const {register, getValues, handleSubmit} = useForm<FormData>();
+    const {user, setUser} = useContext(UserContext);
 
     const handleThirdFormSubmit = () =>{
         alert(`onlineService:  ${getValues('onlineService')} largerStorage: ${getValues('largerStorage')} customizableProfile: ${getValues('customizableProfile')}`);
@@ -27,7 +29,7 @@ const ThirdStepForm = () => {
                                 <h1 className="font-Medium text-Marine-blue text-base">Online Service</h1>
                                 <p className="font-Regular text-Cool-gray">Access to multiplayer games</p>
                             </div>
-                            <p className="font-Regular text-blue-900 text-xs">{"+$1/mo"}</p>
+                            <p className="font-Regular text-blue-900 text-xs">{user.billingType.includes("monthly") ? "+$1/mo" : "+$10/yr"}</p>
                         </label>
                     </div>
                 </div>
@@ -40,7 +42,7 @@ const ThirdStepForm = () => {
                                 <h1 className="font-Medium text-Marine-blue text-base">Larger Storage</h1>
                                 <p className="font-Regular text-Cool-gray">Extra 1TB of cloud save</p>
                             </div>
-                            <p className="font-Regular text-blue-900 text-xs">{"+$2/mo"}</p>
+                            <p className="font-Regular text-blue-900 text-xs">{user.billingType.includes("monthly") ? "+$2/mo" : "+$20/yr"}</p>
                         </label>
                     </div>
                 </div>
@@ -53,7 +55,7 @@ const ThirdStepForm = () => {
                                 <h1 className="font-Medium text-Marine-blue text-base">Customizable Profile</h1>
                                 <p className="font-Regular text-Cool-gray">Custom theme on your profile</p>
                             </div>
-                            <p className="font-Regular text-blue-900 text-xs">{"+$2/mo"}</p>
+                            <p className="font-Regular text-blue-900 text-xs">{user.billingType.includes("monthly") ? "+$2/mo" : "+$20/yr"}</p>
                         </label>
                     </div>
                 </div>
