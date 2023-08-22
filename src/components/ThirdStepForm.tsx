@@ -20,10 +20,10 @@ const ThirdStepForm = () => {
             <ThirdStepFormHeader />
             <form className="w-full" id="ThirdStepForm" onSubmit={handleSubmit(handleThirdFormSubmit)}>
                 <div className="relative mb-4">
-                    <input type='checkbox' {...register('onlineService')} className="m-0 z-20 peer/onlineService absolute top-[40%] left-2 scale-125" id="onlineService"/>
+                    <input type='checkbox' {...register('onlineService')} className="m-0 z-20 peer/onlineService absolute top-[40%] left-2 scale-x-110" id="onlineService"/>
                     <div className="border border-Light-gray rounded-md peer-checked/onlineService:border-Purplish-blue peer-checked/onlineService:bg-Magnolia">
-                        <label htmlFor="onlineService" className="flex">
-                            <div>
+                        <label htmlFor="onlineService" className="flex p-3 items-center justify-between">
+                            <div className="ml-4">
                                 <h1 className="font-Medium text-Marine-blue text-base">Online Service</h1>
                                 <p className="font-Regular text-Cool-gray">Access to multiplayer games</p>
                             </div>
@@ -33,10 +33,10 @@ const ThirdStepForm = () => {
                 </div>
 
                 <div className="relative mb-4">
-                    <input type='checkbox' {...register('largerStorage')} className="m-0 z-20 peer/largerStorage absolute top-[40%] left-2 scale-125" id="largerStorage"/>
+                    <input type='checkbox' {...register('largerStorage')} className="m-0 z-20 peer/largerStorage absolute top-[40%] left-2 scale-110" id="largerStorage"/>
                     <div className="border border-Light-gray rounded-md peer-checked/largerStorage:border-Purplish-blue peer-checked/largerStorage:bg-Magnolia">
-                        <label className="flex" htmlFor="largerStorage">
-                            <div>
+                        <label className="flex p-3 items-center justify-between" htmlFor="largerStorage">
+                            <div className="ml-4">
                                 <h1 className="font-Medium text-Marine-blue text-base">Larger Storage</h1>
                                 <p className="font-Regular text-Cool-gray">Extra 1TB of cloud save</p>
                             </div>
@@ -46,10 +46,10 @@ const ThirdStepForm = () => {
                 </div>
 
                 <div className="relative mb-4">
-                    <input type='checkbox' {...register('customizableProfile')} className="m-0 z-20 peer/customizableProfile absolute top-[40%] left-2 scale-125" id="customizableProfile"/>
+                    <input type='checkbox' {...register('customizableProfile')} className="m-0 z-20 peer/customizableProfile absolute top-[40%] left-2 scale-110" id="customizableProfile"/>
                     <div className="border border-Light-gray rounded-md peer-checked/customizableProfile:border-Purplish-blue peer-checked/customizableProfile:bg-Magnolia">
-                        <label className="flex" htmlFor="customizableProfile">
-                            <div>
+                        <label className="flex p-3 items-center justify-between" htmlFor="customizableProfile">
+                            <div className="ml-4">
                                 <h1 className="font-Medium text-Marine-blue text-base">Customizable Profile</h1>
                                 <p className="font-Regular text-Cool-gray">Custom theme on your profile</p>
                             </div>
