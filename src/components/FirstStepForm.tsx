@@ -2,6 +2,8 @@
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation'
 import FirstStepFormHeader from "./FirstStepFormHeader";
+import { UserContext } from "./ContextProvider";
+import { useContext } from "react";
 
 interface FormData {
     email: string;
@@ -24,9 +26,25 @@ const FirstStepForm = () => {
     })
     const router = useRouter();
 
+    const {setUser} = useContext(UserContext);
+
     const handleFirstFormSubmit = (): void =>{
         // reset();
-        router.push('./SecondStep')
+        if(isValid){
+            isValid && setUser({
+                email: getValues('email'), 
+                phoneNumber: getValues('phoneNumber'), 
+                name: getValues("name"), 
+                billingType: "", 
+                isYearly: false
+            });
+            
+            router.push('./SecondStep');
+        } else{
+            alert("Invalid form data!");
+        }
+
+
     }
 
     return ( 
