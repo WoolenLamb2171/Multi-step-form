@@ -23,7 +23,7 @@ const SeconsStepForm = () => {
           "billing-type": ""
         },
         mode: "onChange"
-      });
+    });
 
     const handleSecondFormSubmit = () =>{
         if(getValues("billing-type") !== ""){
@@ -53,6 +53,7 @@ const SeconsStepForm = () => {
                             </div>
                         </label>
                     </div>
+
                 </div>
 
                 <div className="relative mb-4"> 

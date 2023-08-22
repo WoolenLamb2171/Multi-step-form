@@ -11,7 +11,7 @@ const Footer = () => {
             router.push('/');
         } else if(path === '/ThirdStep'){
             router.push('/SecondStep');
-        } else if(path === 'FourthStep') {
+        } else if(path === '/FourthStep') {
             router.push('/ThirdStep');
         }
     }

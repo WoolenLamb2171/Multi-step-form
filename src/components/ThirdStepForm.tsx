@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import ThirdStepFormHeader from "./ThirsStepFormHeader";
 import { UserContext } from "./ContextProvider";
 import { useContext } from "react";
+import { useRouter } from "next/navigation";
 interface FormData {
     onlineService: boolean;
     largerStorage: boolean;
@@ -12,6 +13,7 @@ interface FormData {
 const ThirdStepForm = () => {
     const {register, getValues, handleSubmit} = useForm<FormData>();
     const {user, setUser} = useContext(UserContext);
+    const router = useRouter();
 
     const handleThirdFormSubmit = () =>{
         setUser({
@@ -20,8 +22,7 @@ const ThirdStepForm = () => {
             largerStorage: (getValues('largerStorage') && !user.largerStorage),
             customizableProfile: (getValues("customizableProfile") && !user.customizableProfile),
         })
-        alert(`onlineService:  ${getValues('onlineService')} largerStorage: ${getValues('largerStorage')} customizableProfile: ${getValues('customizableProfile')}`);
-        alert(JSON.stringify(user))
+        router.push('/FourthStep');
     }
 
     return ( 
