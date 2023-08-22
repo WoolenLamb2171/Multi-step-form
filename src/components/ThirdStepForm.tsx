@@ -18,17 +18,44 @@ const ThirdStepForm = () => {
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <ThirdStepFormHeader />
-            <form id="ThirdStepForm" onSubmit={handleSubmit(handleThirdFormSubmit)}>
-                <div>
-                    <input type='checkbox' {...register('onlineService')} />
+            <form className="w-full" id="ThirdStepForm" onSubmit={handleSubmit(handleThirdFormSubmit)}>
+                <div className="relative mb-4">
+                    <input type='checkbox' {...register('onlineService')} className="m-0 z-20 peer/onlineService absolute top-[40%] left-2 scale-125" id="onlineService"/>
+                    <div className="border border-Light-gray rounded-md peer-checked/onlineService:border-Purplish-blue peer-checked/onlineService:bg-Magnolia">
+                        <label htmlFor="onlineService" className="flex">
+                            <div>
+                                <h1 className="font-Medium text-Marine-blue text-base">Online Service</h1>
+                                <p className="font-Regular text-Cool-gray">Access to multiplayer games</p>
+                            </div>
+                            <p className="font-Regular text-blue-900 text-xs">{"+$1/mo"}</p>
+                        </label>
+                    </div>
                 </div>
 
-                <div>
-                    <input type='checkbox' {...register('largerStorage')} />
+                <div className="relative mb-4">
+                    <input type='checkbox' {...register('largerStorage')} className="m-0 z-20 peer/largerStorage absolute top-[40%] left-2 scale-125" id="largerStorage"/>
+                    <div className="border border-Light-gray rounded-md peer-checked/largerStorage:border-Purplish-blue peer-checked/largerStorage:bg-Magnolia">
+                        <label className="flex" htmlFor="largerStorage">
+                            <div>
+                                <h1 className="font-Medium text-Marine-blue text-base">Larger Storage</h1>
+                                <p className="font-Regular text-Cool-gray">Extra 1TB of cloud save</p>
+                            </div>
+                            <p className="font-Regular text-blue-900 text-xs">{"+$2/mo"}</p>
+                        </label>
+                    </div>
                 </div>
 
-                <div>
-                    <input type='checkbox' {...register('customizableProfile')} />
+                <div className="relative mb-4">
+                    <input type='checkbox' {...register('customizableProfile')} className="m-0 z-20 peer/customizableProfile absolute top-[40%] left-2 scale-125" id="customizableProfile"/>
+                    <div className="border border-Light-gray rounded-md peer-checked/customizableProfile:border-Purplish-blue peer-checked/customizableProfile:bg-Magnolia">
+                        <label className="flex" htmlFor="customizableProfile">
+                            <div>
+                                <h1 className="font-Medium text-Marine-blue text-base">Customizable Profile</h1>
+                                <p className="font-Regular text-Cool-gray">Custom theme on your profile</p>
+                            </div>
+                            <p className="font-Regular text-blue-900 text-xs">{"+$2/mo"}</p>
+                        </label>
+                    </div>
                 </div>
             </form>
         </div> 
