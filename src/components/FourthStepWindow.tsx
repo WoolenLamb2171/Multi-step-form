@@ -8,6 +8,7 @@ const FourthStepWindow = () => {
     const {user} = useContext(UserContext);
 
     function getTotal(user: User) {
+        let isMonthly = false;
         const basePriceMap: {[key: string]: number } = {
             "yearly arcade": 90,
             "monthly arcade": 9,
@@ -33,6 +34,7 @@ const FourthStepWindow = () => {
         let additionalPrices = 0;
     
         if (user.billingType.includes("monthly")) {
+            isMonthly = true;
             additionalPrices += Object.keys(additionalMonthlyPrices)
                 .filter(option => user[option])
                 .reduce((sum, option) => sum + additionalMonthlyPrices[option], 0);
@@ -44,15 +46,17 @@ const FourthStepWindow = () => {
 
         let total = basePrice + additionalPrices;
     
-        return {basePrice, additionalPrices, total};
+        return {basePrice, additionalPrices, total, isMonthly};
     }
 
-    const {basePrice, additionalPrices, total} = getTotal(user);
+    const {basePrice, additionalPrices, total, isMonthly} = getTotal(user);
 
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <FourthStepWindowHeader />
-            <p>{total}</p>
+            <div>
+
+            </div>
         </div> 
     );
 }
