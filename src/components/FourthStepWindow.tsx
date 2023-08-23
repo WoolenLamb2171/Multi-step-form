@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import FourthStepWindowHeader from "./FourthStepWindowHeader";
 import { User, UserContext } from "./ContextProvider";
+import Link from "next/link";
 
 
 const FourthStepWindow = () => {
@@ -32,30 +33,44 @@ const FourthStepWindow = () => {
      
         let basePrice = basePriceMap[user.billingType] || 0;
         let additionalPrices = 0;
+        let selectedOptions: string[] = [];
     
         if (user.billingType.includes("monthly")) {
             isMonthly = true;
-            additionalPrices += Object.keys(additionalMonthlyPrices)
-                .filter(option => user[option])
-                .reduce((sum, option) => sum + additionalMonthlyPrices[option], 0);
+            selectedOptions = Object.keys(additionalMonthlyPrices).filter(option => user[option]);
+            additionalPrices += selectedOptions.reduce((sum, option) => sum + additionalMonthlyPrices[option], 0);
         } else {
-            additionalPrices += Object.keys(additionalYearlyPrices)
-                .filter(option => user[option])
-                .reduce((sum, option) => sum + additionalYearlyPrices[option], 0);
+            selectedOptions = Object.keys(additionalYearlyPrices).filter(option => user[option]);
+            additionalPrices += selectedOptions.reduce((sum, option) => sum + additionalYearlyPrices[option], 0);
         }
-
+    
         let total = basePrice + additionalPrices;
     
-        return {basePrice, additionalPrices, total, isMonthly};
+        return { basePrice, additionalPrices, total, isMonthly, selectedOptions };
     }
+    
 
-    const {basePrice, additionalPrices, total, isMonthly} = getTotal(user);
+    const {basePrice, additionalPrices, total, isMonthly, selectedOptions} = getTotal(user);
 
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <FourthStepWindowHeader />
-            <div>
+            <div className="bg-Light-gray py-4 px-3 rounded-lg mt-[10%] w-[94%]">
+                <div>
+                    <div>
+                        <p>
 
+                        </p>
+                        <Link href="/SecondStep">Change</Link>
+                    </div>
+
+                    <p>
+
+                    </p>
+                </div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div> 
     );
