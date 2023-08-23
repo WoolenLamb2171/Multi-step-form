@@ -7,7 +7,7 @@ import { User, UserContext } from "./ContextProvider";
 const FourthStepWindow = () => {
     const {user} = useContext(UserContext);
 
-    function getTotal(user: User): number {
+    function getTotal(user: User) {
         const basePriceMap: {[key: string]: number } = {
             "yearly arcade": 90,
             "monthly arcade": 9,
@@ -28,26 +28,31 @@ const FourthStepWindow = () => {
             largerStorage: 20,
             onlineService: 10,
         };
-    
-        let total = basePriceMap[user.billingType] || 0;
+     
+        let basePrice = basePriceMap[user.billingType] || 0;
+        let additionalPrices = 0;
     
         if (user.billingType.includes("monthly")) {
-            total += Object.keys(additionalMonthlyPrices)
+            additionalPrices += Object.keys(additionalMonthlyPrices)
                 .filter(option => user[option])
                 .reduce((sum, option) => sum + additionalMonthlyPrices[option], 0);
         } else {
-            total += Object.keys(additionalYearlyPrices)
+            additionalPrices += Object.keys(additionalYearlyPrices)
                 .filter(option => user[option])
                 .reduce((sum, option) => sum + additionalYearlyPrices[option], 0);
         }
+
+        let total = basePrice + additionalPrices;
     
-        return total;
+        return {basePrice, additionalPrices, total};
     }
+
+    const {basePrice, additionalPrices, total} = getTotal(user);
 
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <FourthStepWindowHeader />
-            <p>{getTotal(user)}</p>
+            <p>{total}</p>
         </div> 
     );
 }
