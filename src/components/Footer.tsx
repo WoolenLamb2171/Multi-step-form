@@ -37,8 +37,9 @@ const Footer = () => {
         }
     }
 
-    return ( 
-        <div className=" flex bg-White  w-full p-4 justify-between mt-auto">
+    return ( <>{!user.isFormConfirmed && (
+        <>
+            <div className=" flex bg-White  w-full p-4 justify-between mt-auto">
             {!(path === '/') ? <button onClick={handleButtonClick} className="font-Regular text-base border-none text-Light-gray ">Go Back</button> : <div></div>}
             {path === '/FourthStep' ? <button onClick={handleConfirmButtonClick} className="bg-Purplish-blue text-White font-Regular text-sm p-4 rounded-md">Confirm</button> : (
                 <button 
@@ -50,6 +51,8 @@ const Footer = () => {
                 </button>
             )}
         </div>
+        </>)}</>
+
      );
 }
  

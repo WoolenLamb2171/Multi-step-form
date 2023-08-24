@@ -3,6 +3,8 @@ import { useContext } from "react";
 import FourthStepWindowHeader from "./FourthStepWindowHeader";
 import { User, UserContext } from "./ContextProvider";
 import { useRouter } from "next/navigation";
+import thankYou from "../../public/images/icon-thank-you.svg"
+import Image from "next/image";
 
 
 
@@ -63,8 +65,12 @@ const FourthStepWindow = () => {
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
         {user.isFormConfirmed ? 
-            <div>
-                <h1>Form confirmed</h1>
+            <div className="flex justify-center items-center py-14 px-3 flex-col h-full">
+                <Image src={thankYou} width={50} alt="Thank you icon" className="mb-4"/>
+                <h1 className="font-Bold text-Marine-blue text-2xl mb-4">Thank you!</h1>
+                <p className="font-Regular text-Cool-gray text-base mb-4 text-center">
+                    Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.
+                </p>
             </div> 
         : <>
             <FourthStepWindowHeader />
