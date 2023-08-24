@@ -89,9 +89,9 @@ const FourthStepWindow = () => {
                 </div>
                 <hr className="h-px my-3 bg-Cool-gray border-0" />
                 {selectedOptions.map((el) => {
-                    return (<div className="flex items-center justify-between"> 
-                        <p className="font-Regular text-Cool-gray" id={el}>{el.toString()}</p> 
-                        <p className="font-Regular text-Marine-blue text-base">{isMonthly ? `+${additionalMonthlyPrices[el]}/mo` : `+${additionalYearlyPrices[el]}/yr`}</p>
+                    return (<div key={el} className="flex items-center justify-between"> 
+                        <p className="font-Regular text-Cool-gray" key={el}>{el.toString()}</p> 
+                        <p className="font-Regular text-Marine-blue text-base" key={el}>{isMonthly ? `+${additionalMonthlyPrices[el]}/mo` : `+${additionalYearlyPrices[el]}/yr`}</p>
                     </div>)
                 })}
             </div>
