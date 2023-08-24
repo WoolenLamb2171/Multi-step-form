@@ -42,7 +42,7 @@ const SeconsStepForm = () => {
             <fieldset>
 
                 <div className="relative mb-4">
-                    <input {...register("billing-type")} className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/firstButton" id="firstButton" value={isSelected ? "yearly arcade" : "monthly arcade"} type="radio"/>
+                    <input {...register("billing-type")} className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/firstButton" id="firstButton" value={isSelected ? "yearly Arcade" : "monthly Arcade"} type="radio"/>
                     <div className="border border-Light-gray rounded-md peer-checked/firstButton:border-Purplish-blue peer-checked/firstButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3"  htmlFor="firstButton">
                             <Image className="mr-3" width={45} src={arcadeIcon} alt="Arcade icon"/>
@@ -57,7 +57,7 @@ const SeconsStepForm = () => {
                 </div>
 
                 <div className="relative mb-4"> 
-                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/secondButton" type="radio" id="secondButton" value={isSelected ? "yearly advanced" : "monthly advanced"}/>
+                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/secondButton" type="radio" id="secondButton" value={isSelected ? "yearly Advanced" : "monthly Advanced"}/>
                     <div className="border border-Light-gray rounded-md peer-checked/secondButton:border-Purplish-blue peer-checked/secondButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3" htmlFor="secondButton">
                             <Image className="mr-3" width={45} src={advancedIcon} alt="Advanced icon" />
@@ -71,7 +71,7 @@ const SeconsStepForm = () => {
                 </div>
 
                 <div className="relative mb-4">
-                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/thirdButton" type="radio"  id="thirdButton" value={isSelected ? "yearly pro" : "monthly pro"}/>
+                    <input {...register("billing-type")}  className="opacity-0 cursor-pointer absolute h-full w-full m-0 z-20 peer/thirdButton" type="radio"  id="thirdButton" value={isSelected ? "yearly Pro" : "monthly Pro"}/>
                     <div className="border border-Light-gray rounded-md peer-checked/thirdButton:border-Purplish-blue peer-checked/thirdButton:bg-Magnolia">
                         <label className="flex justify-start items-start p-3" htmlFor="thirdButton">
                             <Image className="mr-3" width={45}  src={proIcon} alt="Pro icon" />

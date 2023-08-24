@@ -32,7 +32,17 @@ const Footer = () => {
     return ( 
         <div className=" flex bg-White  w-full p-4 justify-between mt-auto">
             {!(path === '/') ? <button onClick={handleButtonClick} className="font-Regular text-base border-none text-Light-gray ">Go Back</button> : <div></div>}
-            <button form={currentForm()} type="submit" className={classNames("rounded-md bg-Marine-blue text-White font-Regular text-sm p-4", {'bg-Purplish-blue ': (path === "/FourthStep")})} >{path === "/FourthStep" ? "Confirm" : "Next step"}</button>
+            <button 
+                form={currentForm()} 
+                type="submit" 
+                className={
+                    classNames(
+                        "rounded-md bg-Marine-blue text-White font-Regular text-sm p-4", 
+                        {'bg-Purplish-blue ': (path === "/FourthStep")
+                    })} 
+            >
+                {path === "/FourthStep" ? "Confirm" : "Next step"}
+            </button>
         </div>
      );
 }

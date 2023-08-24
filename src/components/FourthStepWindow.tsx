@@ -2,23 +2,24 @@
 import { useContext } from "react";
 import FourthStepWindowHeader from "./FourthStepWindowHeader";
 import { User, UserContext } from "./ContextProvider";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 
 const FourthStepWindow = () => {
-    const {user} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
+    const router = useRouter()
 
     function getTotal(user: User) {
         let isMonthly = false; 
         
         const basePriceMap: {[key: string]: number } = {
-            "yearly arcade": 90,
-            "monthly arcade": 9,
-            "yearly advanced": 120,
-            "monthly advanced": 12,
-            "yearly pro": 150,
-            "monthly pro": 15,
+            "yearly Arcade": 90,
+            "monthly Arcade": 9,
+            "yearly Advanced": 120,
+            "monthly Advanced": 12,
+            "yearly Pro": 150,
+            "monthly Pro": 15,
         };
         
         const additionalMonthlyPrices: Record<string, number> = {
@@ -54,33 +55,39 @@ const FourthStepWindow = () => {
 
     const {basePrice, total, isMonthly, selectedOptions, additionalMonthlyPrices, additionalYearlyPrices} = getTotal(user);
 
+    const handleButtonClick = () =>{
+        setUser({...user, onlineService: false, largerStorage: false, customizableProfile: false, billingType: ""})
+        router.push('/SecondStep')
+    }
+
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
             <FourthStepWindowHeader />
             <div className="bg-Light-gray py-4 px-3 rounded-lg mt-[10%] w-[94%]">
-                <div>
+                <div className="flex items-center justify-between">
                     <div>
-                        <p>
-                            {`${user.billingType[1]} (${isMonthly ? "Monthly" : "Yearly"})`}
+                        <p className="font-Medium text-Marine-blue text-base">
+                            {`${user.billingType.split(' ').pop()} (${isMonthly ? "Monthly" : "Yearly"})`}
                         </p>
-                        <Link href="/SecondStep">Change</Link>
+                        <button onClick={handleButtonClick} className="underline font-Regular text-Cool-gray text-sm" >Change</button>
                     </div>
 
-                    <p>
+                    <p className="font-Medium text-Marine-blue text-base">
                         {`${basePrice}/${isMonthly ? "mo" : "yr"}`}
                     </p>
                 </div>
-                <hr className="h-px my-8 bg-Cool-gray border-0" />
+                <hr className="h-px my-3 bg-Cool-gray border-0" />
                 {selectedOptions.map((el) => {
-                    return (<div> 
-                        <p id={el}>{el.toString()}</p> 
-                        <p>{isMonthly ? `+${additionalMonthlyPrices[el]}/mo` : `+${additionalYearlyPrices[el]}/yr`}</p>
+                    return (<div className="flex items-center justify-between"> 
+                        <p className="font-Regular text-Cool-gray" id={el}>{el.toString()}</p> 
+                        <p className="font-Regular text-Marine-blue text-base">{isMonthly ? `+${additionalMonthlyPrices[el]}/mo` : `+${additionalYearlyPrices[el]}/yr`}</p>
                     </div>)
                 })}
             </div>
-            <div>
-                <p>Total {isMonthly ? "(per month)" : "(per year)"}</p>
-                <p>{`+${total}/${isMonthly ? "mo" : "yr"}`}</p>
+
+            <div className="flex items-center justify-between py-4 px-3 w-[94%]">
+                <p className="font-Regular text-Cool-gray">Total {isMonthly ? "(per month)" : "(per year)"}</p>
+                <p className="font-Medium text-Purplish-blue text-lg">{`+${total}/${isMonthly ? "mo" : "yr"}`}</p>
             </div>
         </div> 
     );
