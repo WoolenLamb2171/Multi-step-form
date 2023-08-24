@@ -23,8 +23,8 @@ export default function RootLayout({
         <Header />
           <ContextProvider>
             {children}
+            <Footer />
           </ContextProvider>
-        <Footer />
       </body>
     </html>
   )

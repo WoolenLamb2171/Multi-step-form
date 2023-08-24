@@ -9,6 +9,7 @@ export type User = {
     onlineService: boolean;
     largerStorage: boolean;
     customizableProfile: boolean;
+    isFormConfirmed: boolean;
     [key: string]: string | boolean; 
 }
 
@@ -26,6 +27,7 @@ const defaultState = {
         onlineService: false,
         largerStorage: false,
         customizableProfile: false,
+        isFormConfirmed: false,
     },
     setUser: (user: User) =>{}
 } as UserContextInterface
@@ -45,6 +47,7 @@ const ContextProvider = ({children}: UserProviderProps) => {
         onlineService: false,
         largerStorage: false,
         customizableProfile: false,
+        isFormConfirmed: false,
     })
 
     return ( 

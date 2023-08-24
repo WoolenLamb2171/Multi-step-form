@@ -31,11 +31,11 @@ const FirstStepForm = () => {
     const handleFirstFormSubmit = (): void =>{
         // reset();
         if(isValid){
-            setUser({...user,
+            setUser(prevUser => ({...prevUser,
                 email: getValues('email'), 
                 phoneNumber: getValues('phoneNumber'), 
                 name: getValues("name"), 
-            });
+            }));
             
             router.push('./SecondStep');
         } else{

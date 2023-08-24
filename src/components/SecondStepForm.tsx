@@ -17,7 +17,7 @@ interface FormData {
 const SeconsStepForm = () => {
     const router = useRouter();
     const [isSelected, setIsSelected] = useState(false);
-    const {setUser, user} = useContext(UserContext);
+    const {setUser} = useContext(UserContext);
     const {register, handleSubmit, getValues} = useForm<FormData>({
         defaultValues: {
           "billing-type": ""
@@ -27,7 +27,7 @@ const SeconsStepForm = () => {
 
     const handleSecondFormSubmit = () =>{
         if(getValues("billing-type") !== ""){
-            setUser({...user, billingType: getValues("billing-type")});
+            setUser(prevUser => ({...prevUser, billingType: getValues("billing-type")}));
             router.push('/ThirdStep');
         } else{
             alert("Select the option");

@@ -16,12 +16,12 @@ const ThirdStepForm = () => {
     const router = useRouter();
 
     const handleThirdFormSubmit = () =>{
-        setUser({
-            ...user, 
+        setUser(prevUser => ({
+            ...prevUser, 
             onlineService: (getValues('onlineService') && !user.onlineService),
             largerStorage: (getValues('largerStorage') && !user.largerStorage),
             customizableProfile: (getValues("customizableProfile") && !user.customizableProfile),
-        })
+        }))
         router.push('/FourthStep');
     }
 

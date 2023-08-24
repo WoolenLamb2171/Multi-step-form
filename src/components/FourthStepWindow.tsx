@@ -56,12 +56,17 @@ const FourthStepWindow = () => {
     const {basePrice, total, isMonthly, selectedOptions, additionalMonthlyPrices, additionalYearlyPrices} = getTotal(user);
 
     const handleButtonClick = () =>{
-        setUser({...user, onlineService: false, largerStorage: false, customizableProfile: false, billingType: ""})
+        setUser(prevUser => ({...prevUser, onlineService: false, largerStorage: false, customizableProfile: false, billingType: ""}))
         router.push('/SecondStep')
     }
 
     return ( 
         <div className="z-10 bg-White py-4 px-3 rounded-lg mt-[10%] w-[94%]">
+        {user.isFormConfirmed ? 
+            <div>
+                <h1>Form confirmed</h1>
+            </div> 
+        : <>
             <FourthStepWindowHeader />
             <div className="bg-Light-gray py-4 px-3 rounded-lg mt-[10%] w-[94%]">
                 <div className="flex items-center justify-between">
@@ -89,6 +94,7 @@ const FourthStepWindow = () => {
                 <p className="font-Regular text-Cool-gray">Total {isMonthly ? "(per month)" : "(per year)"}</p>
                 <p className="font-Medium text-Purplish-blue text-lg">{`+${total}/${isMonthly ? "mo" : "yr"}`}</p>
             </div>
+        </>}
         </div> 
     );
 }
